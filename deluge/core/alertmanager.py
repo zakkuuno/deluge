@@ -54,14 +54,7 @@ class AlertManager(component.Component):
         component.Component.__init__(self, "AlertManager", interval=0.3)
         self.session = component.get("Core").session
 
-        self.session.set_alert_mask(
-            lt.alert.category_t.error_notification |
-            lt.alert.category_t.port_mapping_notification |
-            lt.alert.category_t.storage_notification |
-            lt.alert.category_t.tracker_notification |
-            lt.alert.category_t.status_notification |
-            lt.alert.category_t.ip_block_notification |
-            lt.alert.category_t.performance_warning)
+        self.session.set_alert_mask(lt.alert.category_t.all_categories)
 
         # handlers is a dictionary of lists {"alert_type": [handler1,h2,..]}
         self.handlers = {}
